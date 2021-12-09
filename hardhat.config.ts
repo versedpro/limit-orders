@@ -34,7 +34,36 @@ const config: HardhatUserConfig = {
 					},
 				},
 			},
+			{
+				version: "0.5.16",
+				settings: {
+					optimizer: {
+						enabled: true,
+						runs: 200,
+					},
+				},
+			},
+			{
+				version: "0.6.12",
+				settings: {
+					optimizer: {
+						enabled: true,
+						runs: 200,
+					},
+				},
+			},
 		],
+    overrides: {
+      "contracts/mock/pancakeswap/libraries/PancakeLibrary.sol": {
+				version: "0.5.16",
+				settings: {
+					optimizer: {
+						enabled: true,
+						runs: 200,
+					},
+				},
+      }
+    }
 	},
   networks: {
     ropsten: {
