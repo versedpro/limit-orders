@@ -1,10 +1,29 @@
 {
   "name": "hardhat-project",
+  "files": [
+    "contracts",
+    "deployments"
+  ],
+  "scripts": {
+    "solhint": "solhint 'contracts/**/*.sol'",
+    "build": "hardhat prepend-spdx-license && hardhat compile",
+    "start": "hardhat node",
+    "console": "hardhat console",
+    "test": "hardhat test",
+    "test:coverage": "node --max-old-space-size=4096 ./node_modules/.bin/hardhat coverage",
+    "test:gas": "REPORT_GAS=true yarn test",
+    "deploy:hardhat": "hardhat deploy",
+    "deploy:testnet": "hardhat deploy --network testnet",
+    "deploy:mainnet": "hardhat deploy --network mainnet",
+    "prepublishOnly": "yarn run build"
+  },
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.3",
     "@nomiclabs/hardhat-etherscan": "^2.1.8",
     "@nomiclabs/hardhat-waffle": "^2.0.1",
     "@openzeppelin/contracts": "^4.4.0",
+    "@pancakeswap/sdk": "^2.4.0",
+    "@resolver-engine/core": "^0.3.3",
     "@typechain/ethers-v5": "^7.2.0",
     "@typechain/hardhat": "^2.3.1",
     "@types/chai": "^4.2.22",
@@ -12,6 +31,7 @@
     "@types/node": "^16.11.12",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
     "@typescript-eslint/parser": "^4.33.0",
+    "canonical-weth": "^1.4.0",
     "chai": "^4.3.4",
     "dotenv": "^10.0.0",
     "eslint": "^7.32.0",

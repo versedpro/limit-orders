@@ -68,7 +68,7 @@ contract Settlement is ISettlement {
             args.order.recipient
         );
 
-        // This line is free from reentrancy issues since UniswapV2Pair prevents from them
+        // This line is free from reentrancy issues since PancakePair prevents from them
         filledAmountInOfHash[hash] = filledAmountInOfHash[hash].add(args.amountToFillIn);
 
         emit OrderFilled(hash, args.amountToFillIn, amountOut);

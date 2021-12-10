@@ -24,7 +24,7 @@ library PancakeUtils {
 
     /**
      * @notice Calculates the CREATE2 address for a pair without making any external calls
-     * @param _factory - Address of the uniswapV2 factory contract
+     * @param _factory - Address of the Pancakeswap factory contract
      * @param _tokenA - Address of the token A
      * @param _tokenB - Address of the token B
      * @return pair - Address of the pair

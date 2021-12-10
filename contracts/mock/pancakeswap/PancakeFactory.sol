@@ -24,6 +24,10 @@ contract PancakeFactory is IPancakeFactory {
         return allPairs.length;
     }
 
+    function pairCodeHash() external pure returns (bytes32) {
+        return INIT_CODE_PAIR_HASH;
+    }
+
     function createPair(address tokenA, address tokenB) external returns (address pair) {
         require(tokenA != tokenB, "Pancake: IDENTICAL_ADDRESSES");
         (address token0, address token1) = tokenA < tokenB ? (tokenA, tokenB) : (tokenB, tokenA);

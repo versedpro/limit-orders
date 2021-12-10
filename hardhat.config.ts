@@ -3,6 +3,9 @@ import * as dotenv from "dotenv";
 import { HardhatUserConfig, task } from "hardhat/config";
 import "@nomiclabs/hardhat-etherscan";
 import "@nomiclabs/hardhat-waffle";
+import "hardhat-spdx-license-identifier";
+import "hardhat-deploy";
+import "hardhat-deploy-ethers";
 import "@typechain/hardhat";
 import "hardhat-gas-reporter";
 import "solidity-coverage";
@@ -71,7 +74,22 @@ const config: HardhatUserConfig = {
       accounts:
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
     },
+		hardhat: {
+				gas: 12000000,
+				blockGasLimit: 12000000,
+				allowUnlimitedContractSize: true,
+				accounts: {
+					mnemonic: "test test test test test test test test test test test junk",
+				},
+				live: false,
+				saveDeployments: true,
+		},
   },
+	namedAccounts: {
+			deployer: 0,
+			relayer: 1,
+			user: 2,
+	},
   gasReporter: {
     enabled: process.env.REPORT_GAS !== undefined,
     currency: "USD",
