@@ -14,75 +14,93 @@ require("solidity-coverage");
 // Go to https://hardhat.org/config/ to learn more
 
 module.exports = {
-	solidity: {
-		compilers: [
-			{
-				version: "0.8.4",
-				settings: {
-					optimizer: {
-						enabled: true,
-						runs: 200,
-					},
-				},
-			},
-			{
-				version: "0.5.16",
-				settings: {
-					optimizer: {
-						enabled: true,
-						runs: 200,
-					},
-				},
-			},
-			{
-				version: "0.6.12",
-				settings: {
-					optimizer: {
-						enabled: true,
-						runs: 200,
-					},
-				},
-			},
-		],
+    solidity: {
+        compilers: [
+            {
+                version: "0.8.4",
+                settings: {
+                    optimizer: {
+                        enabled: true,
+                        runs: 200,
+                    },
+                },
+            },
+            {
+                version: "0.5.16",
+                settings: {
+                    optimizer: {
+                        enabled: true,
+                        runs: 200,
+                    },
+                },
+            },
+            {
+                version: "0.6.12",
+                settings: {
+                    optimizer: {
+                        enabled: true,
+                        runs: 200,
+                    },
+                },
+            },
+        ],
     overrides: {
       "contracts/mock/pancakeswap/libraries/PancakeLibrary.sol": {
-				version: "0.5.16",
-				settings: {
-					optimizer: {
-						enabled: true,
-						runs: 200,
-					},
-				},
+                version: "0.5.16",
+                settings: {
+                    optimizer: {
+                        enabled: true,
+                        runs: 200,
+                    },
+                },
       }
     }
-	},
-  networks: {
-    ropsten: {
-      url: process.env.ROPSTEN_URL || "",
-      accounts:
-        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
     },
-		hardhat: {
-				gas: 12000000,
-				blockGasLimit: 12000000,
-				allowUnlimitedContractSize: true,
-				accounts: {
-					mnemonic: "test test test test test test test test test test test junk",
-				},
-				live: false,
-				saveDeployments: true,
-		},
+  networks: {
+    testnet: {
+      url: "https://data-seed-prebsc-2-s3.binance.org:8545/",
+      chainId: 97,
+      gasPrice: 20000000000,
+      accounts: {
+        mnemonic: process.env.MNEMONIC !== undefined ? process.env.MNEMONIC : ''
+      },
+    },
+    mainnet: {
+      url: "https://bsc-dataseed.binance.org/",
+      chainId: 56,
+      gasPrice: 20000000000,
+      accounts: {
+                mnemonic: process.env.MNEMONIC !== undefined ? process.env.MNEMONIC : ''
+            },
+    },
+    hardhat: {
+        gas: 12000000,
+        blockGasLimit: 12000000,
+        allowUnlimitedContractSize: true,
+        accounts: {
+            mnemonic: "test test test test test test test test test test test junk",
+        },
+        live: false,
+        saveDeployments: true,
+    },
   },
-	namedAccounts: {
-			deployer: 0,
-			relayer: 1,
-			user: 2,
-	},
+    namedAccounts: {
+        deployer: 0,
+        relayer: 1,
+        user: 2,
+    },
   gasReporter: {
     enabled: process.env.REPORT_GAS !== undefined,
     currency: "USD",
   },
+  abiExporter: {
+    path: "./data/abi",
+    clear: true,
+    flat: true,
+    only: [],
+    spacing: 2,
+  },
   etherscan: {
-    apiKey: process.env.ETHERSCAN_API_KEY,
+    apiKey: process.env.BSCSCAN_API_KEY,
   },
 };

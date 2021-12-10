@@ -43,8 +43,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
             },
             "deposit"
         );
-    }
-    if (network.name !== "mainnet") {
+
         await deployBEP20(deterministic, deployer, "CRSSToken", "CRSS", 18);
         await deployBEP20(deterministic, deployer, "BUSD", "BUSD", 18);
     }
