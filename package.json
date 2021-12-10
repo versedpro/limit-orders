@@ -13,8 +13,10 @@
     "test:coverage": "node --max-old-space-size=4096 ./node_modules/.bin/hardhat coverage",
     "test:gas": "REPORT_GAS=true yarn test",
     "deploy:hardhat": "hardhat deploy",
-    "deploy:testnet": "hardhat deploy --network testnet",
-    "deploy:mainnet": "hardhat deploy --network mainnet",
+    "deploy:testnet": "hardhat run scripts/deploy.js --network testnet",
+    "deploy:mainnet": "hardhat run scripts/deploy.js --network mainnet",
+    "verify:testnet": "hardhat etherscan-verify --network testnet",
+    "verify:mainnet": "hardhat etherscan-verify --network mainnet",
     "prepublishOnly": "yarn run build"
   },
   "devDependencies": {
